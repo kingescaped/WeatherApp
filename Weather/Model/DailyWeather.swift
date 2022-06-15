@@ -28,7 +28,7 @@ struct CoordD: Codable {
 
 // MARK: - List
 struct ListD: Codable {
-    let dt, sunrise, sunset: Int
+    let dt, sunrise, sunset: Double
     let temp: Temp
     let feelsLike: FeelsLike
     let pressure, humidity: Int

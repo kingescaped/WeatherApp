@@ -36,11 +36,51 @@ extension Double{
         let timeResult : Double = self
         let date = Date(timeIntervalSince1970: timeResult)
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: Locale.preferredLanguages[0])
         dateFormatter.dateFormat = "EEEE | dd.MM"
         dateFormatter.timeZone = .current
         let localDate = dateFormatter.string(from: date)
-        print(localDate)
         return localDate
    
+    }
+    
+    func formatDay() -> String{
+        let timeResult : Double = self
+        let date = Date(timeIntervalSince1970: timeResult)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: Locale.preferredLanguages[0])
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.timeZone = .current
+        let localDay = dateFormatter.string(from: date)
+        return localDay
+    }
+    
+    func formatTime() -> String{
+        let timeResult : Double = self
+        let date = Date(timeIntervalSince1970: timeResult)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: Locale.preferredLanguages[0])
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+    
+    func formatMbar() -> String{
+        return String(format: "%.0f", self) + " Mbar"
+    }
+    
+    func formatAtm() -> String{
+        let atm = self * 0.99 / 1000
+        return String(format: "%.2f", atm) + " Atm"
+    }
+    
+    func formatmmHg() -> String{
+        let mmHg = self * 750 / 1000
+        return String(format: "%.0f", mmHg) + " mmHg"
+    }
+    func formatTempF() -> String{
+        let f = (self - 273.15) * 9/5 + 32
+        return String(format: "%.0f", f) + "°F"
     }
 }
